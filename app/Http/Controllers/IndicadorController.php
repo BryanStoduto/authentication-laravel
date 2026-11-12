@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SincronizarIndicador;
 use App\Models\Indicador;
-use App\Models\Valor;
-use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 
 class IndicadorController extends Controller
@@ -25,8 +23,8 @@ class IndicadorController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $dados = $request->validate([
-            'codigo'  => ['required', 'integer', 'min:1', 'unique:indicadores,codigo'],
-            'nome'    => ['required', 'string', 'max:100'],
+            'codigo' => ['required', 'integer', 'min:1', 'unique:indicadores,codigo'],
+            'nome' => ['required', 'string', 'max:100'],
             'url_api' => ['nullable', 'url', 'max:500'],
         ]);
 
@@ -35,7 +33,7 @@ class IndicadorController extends Controller
 
         Indicador::create($dados);
 
-        return back()->with('status', 'Indicador cadastrado. Clique em Sincronizar para buscar os valores.');
+        return back()->with('status', 'Indicador cadastrado.');
     }
 
     public function update(Request $request, Indicador $indicador): RedirectResponse
@@ -60,24 +58,21 @@ class IndicadorController extends Controller
     public function sincronizar(Indicador $indicador): RedirectResponse
     {
         try {
-            // withoutVerifying(): só para desenvolvimento (erro de SSL no Windows).
-            $resposta = Http::withoutVerifying()->timeout(30)->get($indicador->url_api);
+            SincronizarIndicador::dispatchSync($indicador);
+
+            return back()->with(
+                'status',
+                "Sincronização do indicador {$indicador->nome} concluída com sucesso!"
+            );
+
         } catch (\Throwable $e) {
-            return back()->withErrors(['api' => 'Não foi possível acessar a API: ' . $e->getMessage()]);
+
+            return redirect()->route('sincronizacao.erro')->with([
+                'indicador' => $indicador->nome,
+                'codigo' => $indicador->codigo,
+                'mensagem' => 'Registro retornado da API com problema.',
+                'detalhes' => $e->getMessage(),
+            ]);
         }
-
-        if ($resposta->failed() || !is_array($resposta->json())) {
-            return back()->withErrors(['api' => "A API do BCB não respondeu corretamente (HTTP {$resposta->status()})."]);
-        }
-
-        $linhas = collect($resposta->json())->map(fn ($l) => [
-            'indicador_id' => $indicador->id,
-            'data'         => Carbon::createFromFormat('d/m/Y', $l['data'])->toDateString(),
-            'valor'        => (float) $l['valor'],
-        ])->all();
-
-        Valor::upsert($linhas, ['indicador_id', 'data'], ['valor']);
-
-        return back()->with('status', count($linhas) . " valores sincronizados para {$indicador->nome}.");
     }
 }
