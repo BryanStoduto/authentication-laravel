@@ -7,4 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+// Alterado de 'showLoginForm' para 'login'
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
