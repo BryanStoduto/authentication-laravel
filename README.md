@@ -1,58 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Como executar o projeto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+No terminal do VS Code, execute o comando:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Após iniciar o servidor, acesse a aplicação pelo endereço:
 
-## Contributing
+<p align="center">
+  <img width="535" height="87" alt="Tela de login" src="https://github.com/user-attachments/assets/69f79578-af37-492d-9a40-1d8cdb669d8d" />
+</p>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+URL:**http://127.0.0.1:8000**
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Acesso ao sistema
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Utilize as seguintes credenciais para realizar o login:
 
-## License
+- **E-mail:** test@example.com
+- **Senha:** 1234567
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<img width="1841" height="985" alt="Dashboard do sistema" src="https://github.com/user-attachments/assets/c4f09cf4-e9c9-4123-ab22-fe1de8cc41f0" />
+
+
+## Dashboard
+
+Após realizar o login, o usuário tem acesso à tela principal, onde são apresentados os indicadores cadastrados e suas respectivas informações.
+
+<img width="1502" height="662" alt="Opção salvar" src="https://github.com/user-attachments/assets/34561fac-1eac-4969-bbe5-b016198460be" />
+
+
+## Opção Salvar
+
+Permite salvar as alterações realizadas nas informações dos indicadores cadastrados.
+
+
+<img width="876" height="448" alt="Confirmação de salvamento" src="https://github.com/user-attachments/assets/d4fa8a19-b4d9-4a44-ab1d-8b25e3842132" />
+
+## Opção Excluir
+
+Permite excluir o indicador selecionado, incluindo seus valores já sincronizados, sem afetar os demais indicadores.
+
+<img width="1217" height="525" alt="Opção excluir indicador" src="https://github.com/user-attachments/assets/d1a482d8-e225-4c21-bf5f-332f6c2f0736" />
+
+## Cadastro
+
+Permite cadastrar novos indicadores no sistema para que possam ser gerenciados e sincronizados posteriormente.
+
+<img width="1182" height="512" alt="Cadastro de indicador" src="https://github.com/user-attachments/assets/9923b7d7-3b49-4cce-a632-784d87835017" />
+
+## Sincronizar
+
+Permite iniciar o processo de sincronização dos indicadores, buscando e atualizando seus respectivos valores.
+
+<img width="1234" height="572" alt="Sincronização de indicadores" src="https://github.com/user-attachments/assets/53865fa3-8401-4f51-8992-0f151ed4e245" />
+
+## Erro na sincronização
+
+Caso a API apresente alguma instabilidade ou não responda corretamente durante a sincronização, o sistema exibirá uma tela de erro informando que não foi possível concluir a operação.
+
+<img width="1607" height="797" alt="image" src="https://github.com/user-attachments/assets/bd1da281-d7b5-4c82-a2c3-350c4e9d8941" />
