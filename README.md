@@ -1,14 +1,16 @@
-Passo a Passo
+# no terminal vs code
 
-# terminal vs code
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd15c1b4-f7e7-4e6c-8bdd-919eb6c37a73" alt="Terminal com comando php artisan serve">
+</p>    
+    
+    php artisan serve
+    
+<p align="center"><img width="535" height="87" alt="image" src="https://github.com/user-attachments/assets/69f79578-af37-492d-9a40-1d8cdb669d8d" /></p>
 
-<img width="495" height="45" alt="image" src="https://github.com/user-attachments/assets/dd15c1b4-f7e7-4e6c-8bdd-919eb6c37a73" />
+    http://127.0.0.1:8000
 
-
-
-<img width="535" height="87" alt="image" src="https://github.com/user-attachments/assets/69f79578-af37-492d-9a40-1d8cdb669d8d" />
-
-<img width="1841" height="985" alt="image" src="https://github.com/user-attachments/assets/c4f09cf4-e9c9-4123-ab22-fe1de8cc41f0" />
+<br><br><img width="1841" height="985" alt="image" src="https://github.com/user-attachments/assets/c4f09cf4-e9c9-4123-ab22-fe1de8cc41f0" />
 
     E-mail: test@example.com
     Senha: 1234567
