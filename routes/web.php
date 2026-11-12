@@ -1,14 +1,34 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndicadorController;
 
+// Página inicial
 Route::get('/', [IndicadorController::class, 'index'])
     ->middleware('auth')
     ->name('indicadores.index');
 
+// Login
+Route::get('/login', [AuthController::class, 'login'])
+    ->name('login');
+
+Route::post('/login', [AuthController::class, 'authenticate'])
+    ->name('login.authenticate');
+
+// Cadastro
+Route::get('/register', [AuthController::class, 'register'])
+    ->name('register');
+
+Route::post('/register', [AuthController::class, 'store'])
+    ->name('register.store');
+
+// Logout
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
+
+// Rotas protegidas
 Route::middleware('auth')->group(function () {
 
     Route::get('/sincronizacao/erro', function () {
@@ -30,11 +50,3 @@ Route::middleware('auth')->group(function () {
     Route::get('/consulta', [IndicadorController::class, 'consultar'])
         ->name('indicadores.consultar');
 });
-
-Route::get('/login', [AuthController::class, 'login'])
-    ->name('login');
-
-Route::post('/login', [AuthController::class, 'authenticate']);
-
-Route::post('/logout', [AuthController::class, 'logout'])
-    ->name('logout');

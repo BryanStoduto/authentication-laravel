@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+/* Arquivos Blade do projeto */
+@source '../**/*.blade.php';
+
+/* Arquivos JavaScript */
+@source '../**/*.js';
+
+/* Arquivos do Laravel */
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 

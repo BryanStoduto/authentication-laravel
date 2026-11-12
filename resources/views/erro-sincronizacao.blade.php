@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2d2c2b, #111010);
+            background: linear-gradient(to right, #901212, #000000);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,16 +23,16 @@
             text-align: center;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 2px 0px 5px rgba(247, 247, 247, 0.1);
+            box-shadow: 0 2px 5px 5px rgba(247, 247, 247, 0.1);
             p color: #ffffff;
         }
 
         h1 {
-            color: #dc3545;
+            color: #ff0000;
         }
 
         .detalhes {
-            background: #f8d7da;
+            background: #transparent;
             color: #721c24;
             padding: 12px;
             border-radius: 5px;
@@ -50,7 +50,7 @@
         }
 
         .botao:hover {
-            background: #0056b3;
+            background: #901212;
         }
     </style>
 </head>
