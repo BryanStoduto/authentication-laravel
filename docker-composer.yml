@@ -1,0 +1,20 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: authStudy
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234567
+      MYSQL_DATABASE: auth_study_laravel
+    networks:
+      authStudyLaravel:
+        ipv4_address: 11.15.0.4
+
+networks:
+  authStudyLaravel:
+    ipam:
+      config:
+        - subnet: 11.15.0.0/16
+          gateway: 11.15.0.1
