@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -9,23 +8,27 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('valores', function (Blueprint $table) {
-            $table->id();
+        // A tabela já pode ter sido criada pela migration de indicadores.
+        if (!Schema::hasTable('valores')) {
+            Schema::create('valores', function (Blueprint $table) {
+                $table->id();
 
-            $table->foreignId('indicador_id')
-                ->constrained('indicadores')
-                ->cascadeOnDelete();
+                $table->foreignId('indicador_id')
+                    ->constrained('indicadores')
+                    ->cascadeOnDelete();
 
-            $table->date('data');
+                $table->date('data');
 
-            $table->decimal('valor', 14, 6);
-            // Impede datas duplicadas para o mesmo indicador
-            $table->unique(['indicador_id', 'data']);
-        });
+                $table->decimal('valor', 14, 6);
+
+                $table->unique(['indicador_id', 'data']);
+            });
+        }
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('valores');
+        // Não remover a tabela, pois ela também é criada
+        // pela migration de indicadores.
     }
 };

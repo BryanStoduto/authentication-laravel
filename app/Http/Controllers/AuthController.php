@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Indicador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -52,11 +54,38 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
+        $user = DB::transaction(function () use ($validated) {
+
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+            ]);
+
+            // Indicadores padrão da nova conta
+            $indicadores = [
+                [
+                    'codigo' => 189,
+                    'nome' => 'IGP-M',
+                ],
+                [
+                    'codigo' => 433,
+                    'nome' => 'IPCA',
+                ],
+            ];
+
+            foreach ($indicadores as $indicador) {
+
+                Indicador::create([
+                    'user_id' => $user->id,
+                    'codigo' => $indicador['codigo'],
+                    'nome' => $indicador['nome'],
+                    'url_api' => "https://api.bcb.gov.br/dados/serie/bcdata.sgs.{$indicador['codigo']}/dados?formato=json&dataInicial=01/01/2025&dataFinal=01/11/2026",
+                ]);
+            }
+
+            return $user;
+        });
 
         Auth::login($user);
 
