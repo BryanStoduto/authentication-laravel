@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -25,8 +26,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/indicadores/{indicador}/sincronizar', [IndicadorController::class, 'sincronizar'])
         ->name('indicadores.sincronizar');
+
+    Route::get('/consulta', [IndicadorController::class, 'consultar'])
+        ->name('indicadores.consultar');
 });
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'login'])
+    ->name('login');
+
 Route::post('/login', [AuthController::class, 'authenticate']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');

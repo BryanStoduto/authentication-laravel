@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SincronizarIndicador;
 use App\Models\Indicador;
+use App\Models\Valor;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -74,5 +75,33 @@ class IndicadorController extends Controller
                 'detalhes' => $e->getMessage(),
             ]);
         }
+    }
+
+    public function consultar(Request $request): View
+    {
+        $dados = $request->validate([
+            'indicador_id' => ['required', 'exists:indicadores,id'],
+            'data_inicial' => ['required', 'date'],
+            'data_final' => ['required', 'date', 'after_or_equal:data_inicial'],
+        ]);
+
+        $indicadores = Indicador::withCount('valores')
+            ->withMax('valores', 'data')
+            ->orderBy('codigo')
+            ->get();
+
+        $valores = Valor::where('indicador_id', $dados['indicador_id'])
+            ->whereBetween('data', [
+                $dados['data_inicial'],
+                $dados['data_final']
+            ])
+            ->orderBy('data')
+            ->get();
+
+        return view('indicadores', [
+            'indicadores' => $indicadores,
+            'valores' => $valores,
+            'filtros' => $dados,
+        ]);
     }
 }
