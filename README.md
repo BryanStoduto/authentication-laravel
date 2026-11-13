@@ -45,15 +45,28 @@ http://127.0.0.1:8000
 
 <br>
 
+<img width="1342" height="680" alt="image" src="https://github.com/user-attachments/assets/31a10528-bfe8-4bab-b9b4-c0316199e237" />
+
+<br>
+
 <img width="1381" height="397" alt="image" src="https://github.com/user-attachments/assets/7f53004d-075b-4473-a32d-7823c7055e97" />
+
+<br>
+
+<img width="1401" height="506" alt="image" src="https://github.com/user-attachments/assets/ed429cd6-5c97-469d-8e43-1265492930cd" />
 
 <br>
 
 <img width="1583" height="812" alt="image" src="https://github.com/user-attachments/assets/c54d5e66-43af-43e3-bbcf-ff84cef4de1f" />
 
+<br>
+
+# 5. Tela de erro na sincronização
+<p> Caso ocorra algum erro durante a sincronização com a API, o sistema exibirá a tela abaixo, informando que houve uma falha no processo.
+<img width="1372" height="841" alt="image" src="https://github.com/user-attachments/assets/bed7e023-7d2b-459a-9815-a5df10e850dc" />
 
 
-# 5. Consultando indicadores
+# 6. Consultando indicadores
 
 <img width="1542" height="288" alt="image" src="https://github.com/user-attachments/assets/a65cc497-0ee4-45bd-ac03-5cf4d76c0942" />
 
@@ -61,8 +74,29 @@ http://127.0.0.1:8000
 
 <img width="1118" height="731" alt="image" src="https://github.com/user-attachments/assets/ce4b1efc-514a-41c4-a978-b60d673db227" />
 
-## 6. Visualizando o gráfico
+## 7. Visualizando o gráfico
 
 <img width="1380" height="683" alt="image" src="https://github.com/user-attachments/assets/0c731cc2-f6d3-48a8-a317-17e129147928" />
 
 <p>Na seção de gráficos, visualize os dados dos indicadores de forma gráfica, facilitando a comparação e o acompanhamento de seus valores.</p>
+
+
+## Tecnologias utilizadas
+- PHP
+- Laravel
+- MySQL
+- HTML
+- CSS
+- JavaScript
+- Docker
+- API do Banco Central (SGS)
+
+## Funcionalidades
+- Cadastro e login de usuários.
+- Cadastro de indicadores IPCA e IGP-M.
+- Edição e exclusão de indicadores.
+- Sincronização de dados com a API.
+- Armazenamento dos dados no banco de dados.
+- Consulta de indicadores.
+- Exibição de gráficos.
+- Identificação e exibição de erros na sincronização.
